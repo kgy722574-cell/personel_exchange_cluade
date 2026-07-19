@@ -3,202 +3,80 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>인사교류</title>
+<title>행정정보 통합관리법 · 조문 검색</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700;900&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700;900&family=Noto+Sans+KR:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="masthead">
+<div class="letterpress"></div>
+
+<header class="masthead">
   <div class="masthead__inner">
-    <span class="masthead__doc">행정안전부 보도자료 · 코드 260511</span>
-    <span class="masthead__date">2026. 05. 11.(월) 배포</span>
-  </div>
-</div>
-
-<nav class="nav" id="nav">
-  <div class="nav__inner">
-    <span class="nav__brand">인사교류</span>
-    <div class="nav__links">
-      <a href="#incentive" class="nav__link" data-nav>인사 인센티브</a>
-      <a href="#hiring" class="nav__link" data-nav>채용제도 개선</a>
-      <a href="#timeline" class="nav__link" data-nav>시행 일정</a>
-    </div>
-  </div>
-</nav>
-
-<header class="hero">
-  <div class="hero__inner">
-    <div class="hero__text">
-      <p class="eyebrow">지방인사제도과 · 입법예고</p>
-      <h1 class="hero__title">공무원 인사교류 활성화 및<br>채용제도 개선 입법예고</h1>
-      <p class="hero__lede">중앙부처·지방정부·민간기업 간 벽을 허무는 <strong>'프로젝트 기반 인사교류'</strong> 활성화를 위해
-        교류 참여자에게 파격적인 인사 혜택을 제공하는 「지방공무원 임용령」·「지방공무원 평정규칙」 개정안을
-        5월 11일(월)부터 6월 10일(화)까지 입법예고합니다.</p>
-
-      <ul class="highlight-list">
-        <li><span class="highlight-list__mark">1</span>핵심 인사교류 직위·민간기업 전담공무원 대상 승진 소요 연수 최대 1년 단축</li>
-        <li><span class="highlight-list__mark">2</span>1년 이상 우수 근무자 특별승진 부여, 근무성적 '우' 이상·성과급 'A' 이상 의무 보장</li>
-        <li><span class="highlight-list__mark">3</span>2027년부터 8급 공채 한국사를 '한국사능력검정시험(3급 이상)'으로 대체</li>
-      </ul>
-    </div>
-
-    <div class="hero__seal" aria-hidden="true">
-      <svg viewBox="0 0 220 220" width="220" height="220">
-        <defs>
-          <path id="sealArc" d="M 30,110 A 80,80 0 1,1 190,110" fill="none"/>
-        </defs>
-        <circle cx="110" cy="110" r="96" class="seal__ring-outer"/>
-        <circle cx="110" cy="110" r="82" class="seal__ring-inner"/>
-        <text class="seal__arctext">
-          <textPath href="#sealArc" startOffset="4%">행정안전부 · 지방인사제도과</textPath>
-        </text>
-        <text x="110" y="102" text-anchor="middle" class="seal__word">입법</text>
-        <text x="110" y="140" text-anchor="middle" class="seal__word">예고</text>
-        <text x="110" y="168" text-anchor="middle" class="seal__small">2026.05.11 → 06.10</text>
+    <div class="masthead__seal" aria-hidden="true">
+      <svg viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="50" cy="50" r="38" fill="none" stroke="currentColor" stroke-width="1"/>
+        <text x="50" y="45" text-anchor="middle" class="seal-text">法</text>
+        <text x="50" y="66" text-anchor="middle" class="seal-text-sm">令</text>
       </svg>
+    </div>
+    <div class="masthead__text">
+      <p class="masthead__eyebrow">법률 데이터베이스 · 전문 조회</p>
+      <h1 class="masthead__title">행정정보 통합관리법</h1>
+      <p class="masthead__meta">전체 15개 조 · 부칙 포함 <span class="dot">·</span> 시행 2026. 7. 1.</p>
+    </div>
+  </div>
+
+  <div class="search-block">
+    <label class="search-block__label" for="search-input">조문 본문 검색</label>
+    <div class="search-box">
+      <span class="search-box__mark">§</span>
+      <input id="search-input" type="text" placeholder="검색할 키워드를 입력하세요 (예: 개인정보, 과태료, 표준)" autocomplete="off">
+      <button id="search-clear" class="search-box__clear" type="button" aria-label="검색어 지우기" hidden>&times;</button>
     </div>
   </div>
 </header>
 
-<main>
+<main id="main">
 
-  <section class="intro">
-    <p>이번 개정안은 지난해 발표된 '공직 역량 강화 태스크포스' 운영 성과를 법령에 반영한 것으로,
-      국책사업이나 지역 현안 대응을 위해 신설되는 <strong>'핵심 인사교류'</strong> 직위 근무자와
-      지역 투자 유치를 전담하는 <strong>'민간기업 전담공무원'</strong>에게 구체적이고 실질적인 인센티브를 부여해
-      공직사회 경쟁력을 높이는 데 목적이 있습니다.</p>
+  <section id="results-panel" class="results-panel" hidden>
+    <div class="results-panel__summary">
+      <span class="results-count"><strong id="result-count">0</strong>건의 조문에서 검색됨</span>
+      <span class="results-query">검색어: “<span id="result-query"></span>”</span>
+    </div>
+    <ul id="results-list" class="results-list"></ul>
   </section>
 
-  <!-- 섹션 1 : 인사 인센티브 (금색) -->
-  <section class="section section--gold" id="incentive">
-    <div class="section__inner">
-      <div class="section__head">
-        <span class="section__tag">SECTION 01</span>
-        <h2 class="section__title">파격적인 승진·평가 인센티브</h2>
-        <p class="section__desc">교류 공무원에 대한 확실한 보상 체계를 마련합니다.</p>
-      </div>
-
-      <ul class="card-list">
-        <li class="card">
-          <h3 class="card__title">승진 소요 연수 단축</h3>
-          <p class="card__body">핵심 인사교류 직위 또는 민간기업 전담공무원으로 근무할 경우,
-            해당 직위 교류 기간의 절반을 <strong>최대 1년</strong> 범위 내에서 승진 소요 연수에서 감면합니다.</p>
-        </li>
-        <li class="card">
-          <h3 class="card__title">특별승진 기회 부여</h3>
-          <p class="card__body">해당 직위에서 <strong>1년 이상</strong> 근무하며 우수한 성과를 낸 공무원에게는
-            특별승진의 기회를 부여합니다.</p>
-        </li>
-        <li class="card">
-          <h3 class="card__title">대우공무원 혜택 확대</h3>
-          <p class="card__body">기존에 인사교류자에게만 적용되던 '대우공무원 산정 시 교류 기간 경력 100% 단축'
-            혜택을 <strong>민간기업 전담공무원</strong>에게도 동일하게 확대 적용합니다.</p>
-        </li>
-        <li class="card">
-          <h3 class="card__title">평가·성과급 보장</h3>
-          <p class="card__body">인사교류자는 일반 공무원과 평정 단위를 분리해 근무성적평정에서 최소
-            <strong>'우'</strong> 등급, 성과급에서 최소 <strong>'A'</strong> 등급을 의무 보장받습니다.
-            최상위 등급 우수 성과자에게는 특별성과가산금도 지급할 수 있는 근거를 마련합니다.</p>
-        </li>
-      </ul>
+  <section id="grid-panel" class="grid-panel">
+    <div class="grid-panel__label">
+      <span class="rule"></span>
+      <span>조문 전체 목록</span>
+      <span class="rule"></span>
     </div>
-  </section>
-
-  <!-- 섹션 2 : 채용제도 개선 (청록) -->
-  <section class="section section--teal" id="hiring">
-    <div class="section__inner">
-      <div class="section__head">
-        <span class="section__tag">SECTION 02</span>
-        <h2 class="section__title">수험생 부담 완화 및 우수 인재 채용 확대</h2>
-        <p class="section__desc">지방공무원 공채·경력경쟁 채용 제도를 시대 흐름에 맞게 개선합니다.</p>
-      </div>
-
-      <ul class="card-list">
-        <li class="card">
-          <h3 class="card__title">8급 한국사 과목 대체</h3>
-          <p class="card__body">수험생의 부담을 덜고 채용시험 간 호환성을 높이기 위해 <strong>2027년부터</strong>
-            8급 공채 한국사 과목을 9급과 동일하게 <strong>'한국사능력검정시험(3급 이상)'</strong>으로 대체합니다.</p>
-        </li>
-        <li class="card">
-          <h3 class="card__title">경력 단축 및 직급 확대</h3>
-          <p class="card__body">최신 경력 반영이 중요한 특정 분야 경채시험은 필요 경력을 <strong>1년</strong> 범위 내에서
-            단축할 수 있는 근거를 마련하고, 우수 인재 추천채용제 대상 직급을 현행 8급 이하에서
-            <strong>7급까지</strong> 확대합니다.</p>
-        </li>
-        <li class="card">
-          <h3 class="card__title">취약 청년 공직 진출 지원</h3>
-          <p class="card__body">9급 공채 저소득층 구분모집 대상에 <strong>'자립준비청년'</strong>과
-            <strong>'보호기간 연장청년'</strong>을 신규 추가합니다. 기초생활수급자·한부모가족 지원 대상자에게
-            요구되던 자격 유지 기간도 2년에서 <strong>1년</strong>으로 완화합니다.</p>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- 시행 일정 -->
-  <section class="timeline" id="timeline">
-    <div class="timeline__inner">
-      <span class="section__tag">TIMELINE</span>
-      <h2 class="section__title">시행 일정</h2>
-
-      <ol class="timeline__list">
-        <li class="timeline__item">
-          <span class="timeline__num">01</span>
-          <div>
-            <h3>입법예고 시작</h3>
-            <p>2026. 05. 11.(월)</p>
-          </div>
-        </li>
-        <li class="timeline__item">
-          <span class="timeline__num">02</span>
-          <div>
-            <h3>입법예고 종료</h3>
-            <p>2026. 06. 10.(화) — 행정안전부 누리집·대한민국 전자관보를 통해 의견 제출 가능</p>
-          </div>
-        </li>
-        <li class="timeline__item">
-          <span class="timeline__num">03</span>
-          <div>
-            <h3>규제심사 · 법제처 심사</h3>
-            <p>예고 기간 종료 후 진행</p>
-          </div>
-        </li>
-        <li class="timeline__item">
-          <span class="timeline__num">04</span>
-          <div>
-            <h3>공포 · 시행</h3>
-            <p>2026년 하반기 중 예정</p>
-          </div>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <!-- 장관 인용구 -->
-  <section class="quote">
-    <div class="quote__inner">
-      <blockquote class="quote__block">
-        <p>“이번 조치는 프로젝트 기반 인사교류를 통해 대규모 국책사업 등에 참여하는 공무원에게
-          파격적인 인센티브를 부여해 보다 성공적인 사업 추진을 돕기 위한 것입니다.
-          앞으로도 공직사회의 개방성을 확대하고 활력을 제고할 수 있도록
-          지방인사제도를 적극적으로 개선해 나가겠습니다.”</p>
-        <footer>윤호중 <span>행정안전부 장관</span></footer>
-      </blockquote>
-    </div>
+    <div id="card-grid" class="card-grid"></div>
   </section>
 
 </main>
 
-<footer class="site-footer">
-  <div class="site-footer__inner">
-    <p class="site-footer__title">공무원 인사교류 활성화 및 채용제도 개선 입법예고</p>
-    <p class="site-footer__meta">담당자 · 지방인사제도과 김정민&nbsp; |&nbsp; 044-205-3347</p>
+<div id="detail-overlay" class="detail-overlay" hidden>
+  <div class="detail-page" role="dialog" aria-modal="true" aria-labelledby="detail-title">
+    <button id="detail-close" class="detail-close" type="button">
+      <span class="detail-close__stamp">닫기</span>
+    </button>
+    <div class="detail-page__ribbon"></div>
+    <p class="detail-eyebrow" id="detail-jo-num"></p>
+    <h2 class="detail-title" id="detail-title"></h2>
+    <div class="detail-rule"></div>
+    <div class="detail-body" id="detail-body"></div>
   </div>
+</div>
+
+<footer class="footer">
+  <p>가상의 법령입니다 · 조항데이터.json 기반으로 생성된 열람용 아카이브</p>
 </footer>
 
-<script src="script.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
